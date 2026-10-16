@@ -9,6 +9,18 @@ and the diff. The primary pass checked key findings and ran a TypeScript baselin
 This is a source-based investigation, not a complete production-data or dynamic
 dependency graph proof.
 
+## Loops retirement supersession — 2026-10-16
+
+The later owner decision retires `/loops`, both Fly endpoints and their
+exclusive frontend dependencies. The feature was never used; no replacement
+redirect or continuing withdrawal UI is requested. The retired URLs must return
+404 in every app environment. This supersedes the Loops-preservation conclusions
+below for this feature only. Earlier route, query, contract and environment
+observations remain historical evidence from 2026-09-28, not claims about the
+post-retirement source. Preserve shared consumers, unrelated FLY pool fixtures
+and all unrelated cleanup boundaries. No remote contract, schema or deployed
+secret change is included in this frontend retirement.
+
 ## User-confirmed constraints
 
 - The GraphQL API has already been heavily refactored to Beets-only. That server

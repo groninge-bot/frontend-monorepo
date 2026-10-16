@@ -41,14 +41,6 @@ export default defineConfig(() => {
             address: sonicNetworkConfig.contracts.balancer?.relayerV6,
           },
           {
-            name: 'MagpieLoopedSonicRouter',
-            address: sonicNetworkConfig.contracts.beets?.magpieLoopedSonicRouter,
-          },
-          {
-            name: 'LoopedSonicVault',
-            address: sonicNetworkConfig.contracts.beets?.loopedSonicVault,
-          },
-          {
             name: 'BalancerV2Vault',
             address: sonicNetworkConfig.contracts.balancer?.vaultV2,
           },

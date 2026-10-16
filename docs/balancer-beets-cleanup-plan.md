@@ -19,6 +19,16 @@ dependencies/assets/plumbing pass, P7 Sentry removal, and P8 final verification
 are complete. P8's local E2E run remains explicitly excluded by user direction;
 remote E2E/backend issues are tracked separately.
 
+### Loops retirement supersession — 2026-10-16
+
+The owner has authorized complete retirement of `/loops` and its exclusive
+Fly/Magpie dependencies. No replacement redirect or withdrawal UI is required;
+the retired URL and both Fly endpoints must return 404 in every environment.
+This decision supersedes earlier Loops-preservation instructions only. Preserve
+shared staking, maBEETS, pool, token, transaction and API origin capabilities.
+The reviewed Loops workflow requires its own E2E evidence; the earlier P8 E2E
+exclusion describes that historical cleanup run.
+
 ### Scope and retained contracts
 
 - The repository already contains only one app. All six supporting workspaces
@@ -26,9 +36,10 @@ remote E2E/backend issues are tracked separately.
   `prettier-config`, `typescript-config`. Audit their contents; do not delete or
   flatten these packages just because there is one app.
 - Preserve pools, swaps, portfolio, v2/v3 liquidity/gauge operations, Sonic
-  staking, maBEETS/Reliquary, pool recovery mode, pool creation, LBP and Loops.
-  LBP and Loops have development/staging surfaces; hidden production navigation
-  does not make their code unused.
+  staking, maBEETS/Reliquary, pool recovery mode, pool creation and LBP.
+  LBP has development/staging surfaces; hidden production navigation does not
+  make its code unused. Loops and its exclusive dependencies are retired under
+  the 2026-10-16 owner decision above.
 - Preserve required API routes/providers, wallet and Safe support, monitoring,
   code generation and verification infrastructure.
 - Sonic is the only supported Beets network. Remove Fantom protocol statistics
@@ -224,7 +235,7 @@ plus the standard ERC20 ABI; legacy protocol ABIs still have separate ownership.
   required ABI extensions/function signatures; do not duplicate SDK ABIs merely
   to generate every deployed contract.
 - The v3 task directory is not authoritative for Beets-native staking/SFC,
-  Reliquary, Loops, or v2 contracts. Verify their Sonic sources independently;
+  Reliquary or v2 contracts. Verify their Sonic sources independently;
   do not drop required v2/reliquary relayer support because it is absent in v3.
 - Migrate retained legacy ABI imports to their documented generation or SDK
   source before deleting legacy output. Keep generated symbols consistent with
@@ -266,7 +277,7 @@ churn. Record explorer/API-key limitations rather than claiming generation passe
   supplied endpoint, and record any external deployment setting that cannot be
   verified locally. Keep the legacy env variable name if renaming it has no
   independent value.
-- Keep live v2 vault/relayer/gauge, Beets staking/Reliquary/Loops and Permit2
+- Keep live v2 vault/relayer/gauge, Beets staking/Reliquary and Permit2
   ABIs. Recheck the Merkl claim ABI after removing cross-chain recovered-funds
   claims: the Sonic Merkl alert links to Merkl externally and does not use that
   ABI. `balancerV2BatchRelayerLibraryAbi` has direct service imports outside
@@ -289,8 +300,10 @@ churn. Record explorer/API-key limitations rather than claiming generation passe
   It is distinct from Sonic Merkl reward discovery and from pool recovery mode.
 - `images/misc/bal-v3.png` is used by Beets' landing page. Other Balancer icons
   are candidates only after checking metadata and computed paths.
-- `thread-stream` and `real-require` appear in Next `serverExternalPackages`;
-  `NEXT_PRIVATE_MAGPIE_API_KEY` is consumed by the Fly API. Preserve them.
+- Preserve `thread-stream` and `real-require`, which appear in Next
+  `serverExternalPackages`. Remove the exclusive Fly API and its
+  `NEXT_PRIVATE_MAGPIE_API_KEY` Turborepo input under the Loops retirement scope;
+  deployed-secret retirement requires a separate ownership/consumer check.
 
 ### Verification and stop condition
 
